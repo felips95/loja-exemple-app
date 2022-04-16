@@ -10,18 +10,18 @@ interface Props {
 export default function Home({ products, tags }: Props) {
   return (
     <main className="mx-auto max-w-5xl pt-3">
-      <section className="flex h-80 items-center justify-center rounded-lg bg-green-400">
+      <section className="flex h-60 items-center justify-center rounded-lg bg-green-400 md:h-80">
         <h1 className="text-3xl">Banner</h1>
       </section>
 
-      <section>
-        <ul className="mt-10 mb-20 flex justify-evenly">
+      <section className="mx-auto max-w-xs md:max-w-5xl">
+        <ul className="mt-5 mb-10 grid grid-cols-2 gap-2 md:mt-10 md:flex md:justify-center md:gap-10">
           {tags.map((categorias) => (
-            <li key={categorias._id}>
+            <li className="border" key={categorias._id}>
               <Link href={`/categoria/${categorias.slug.current}`}>
-                <a className="text-center hover:underline">
+                <a className="flex flex-col items-center text-center hover:underline">
                   <img
-                    className="h-32"
+                    className="h-20 w-20 md:h-32 md:w-32"
                     src={urlFor(categorias.image).url()}
                     alt=""
                   />
@@ -34,12 +34,12 @@ export default function Home({ products, tags }: Props) {
       </section>
 
       <section>
-        <div className="flex justify-between border-t pt-5">
+        <div className="flex justify-between border-t pt-10">
           <h1>Produtos</h1>
           <p>Ver Tudo</p>
         </div>
 
-        <ul className="my-5 grid grid-cols-3 gap-5">
+        <ul className="my-8 grid grid-cols-2 gap-5 md:grid-cols-3">
           {products.map((produtos) => (
             <li className="rounded-sm border p-2" key={produtos._id}>
               <Link href={`/produtos/${produtos.slug.current}`}>

@@ -11,7 +11,7 @@ export default function Navbar() {
             </a>
           </Link>
         </div>
-        <div>
+        <div className="hidden md:block">
           <ul className="flex gap-5">
             <li>
               <a href="#">Produtos</a>
