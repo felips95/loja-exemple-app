@@ -28,16 +28,16 @@ export const getStaticPaths = async () => {
     }
   }`
 
-  const products = await sanityClient.fetch(query)
-  const paths = products.map((products: Product) => ({
+  const prod = await sanityClient.fetch(query)
+  const paths = prod.map((prod: Product) => ({
     params: {
-      slug: products.slug.current,
+      slug: prod.slug.current,
     },
   }))
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 
@@ -45,12 +45,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const products = await sanityClient.fetch(productsQuery, {
     slug: params?.slug,
   })
-
-  if (!products) {
-    return {
-      notFound: true,
-    }
-  }
 
   return {
     props: {
