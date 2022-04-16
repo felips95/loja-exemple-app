@@ -38,6 +38,11 @@ export interface Tags {
   slug: {
     current: string
   }
+  image: {
+    asset: {
+      url: string
+    }
+  }
 
   body: [object]
 }

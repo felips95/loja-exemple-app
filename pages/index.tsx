@@ -9,36 +9,53 @@ interface Props {
 
 export default function Home({ products, tags }: Props) {
   return (
-    <main className="mx-auto max-w-5xl pt-10">
-      <ul className="flex gap-5">
-        {tags.map((categorias) => (
-          <li key={categorias._id}>
-            <Link href={`/categoria/${categorias.slug.current}`}>
-              <a className="hover:text-blue-600 hover:underline">
-                {categorias.title}
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <main className="mx-auto max-w-5xl pt-3">
+      <section className="flex h-80 items-center justify-center rounded-lg bg-green-400">
+        <h1 className="text-3xl">Banner</h1>
+      </section>
 
-      <ul className="my-10 grid grid-cols-3 gap-5">
-        {products.map((produtos) => (
-          <li className="rounded-sm border p-2" key={produtos._id}>
-            <Link href={`/produtos/${produtos.slug.current}`}>
-              <a>
-                <img
-                  className="h-60 object-cover"
-                  src={urlFor(produtos.image).url()}
-                  alt={produtos.title}
-                />
-                <h1>{produtos.title}</h1>
-                <p>{produtos.category[0].title}</p>
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <section>
+        <ul className="mt-10 mb-20 flex justify-evenly">
+          {tags.map((categorias) => (
+            <li key={categorias._id}>
+              <Link href={`/categoria/${categorias.slug.current}`}>
+                <a className="text-center hover:underline">
+                  <img
+                    className="h-32"
+                    src={urlFor(categorias.image).url()}
+                    alt=""
+                  />
+                  <h1 className="mt-3 text-xl">{categorias.title}</h1>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <div className="flex justify-between border-t pt-5">
+          <h1>Produtos</h1>
+          <p>Ver Tudo</p>
+        </div>
+
+        <ul className="my-5 grid grid-cols-3 gap-5">
+          {products.map((produtos) => (
+            <li className="rounded-sm border p-2" key={produtos._id}>
+              <Link href={`/produtos/${produtos.slug.current}`}>
+                <a>
+                  <img
+                    className="aspect-4/3 w-full object-cover"
+                    src={urlFor(produtos.image).url()}
+                    alt={produtos.title}
+                  />
+                  <h1>{produtos.title}</h1>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   )
 }
@@ -64,7 +81,7 @@ const productsQuery = `*[_type=="produtos"]{
     _id,
   }
   
-}`
+}[0...6]`
 
 const tagsQuery = `*[_type=="tags"]{
   _id,

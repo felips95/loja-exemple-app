@@ -17,7 +17,7 @@ export default function categoria({ tag }: Test) {
             <Link href={`/produtos/${prod.slug.current}`}>
               <a>
                 <img
-                  className="h-60 object-cover"
+                  className="aspect-4/3 w-full object-cover"
                   src={urlFor(prod.image).url()}
                   alt={prod.title}
                 />
