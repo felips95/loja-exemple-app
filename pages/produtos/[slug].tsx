@@ -11,7 +11,11 @@ export default function oneProduct({ products }: Test) {
     <main className="mx-auto max-w-5xl pt-10">
       <h1>{products.title}</h1>
       <p>{products.category[0].title}</p>
-      <img className="h-60" src={urlFor(products.image).url()} alt="" />
+      <img
+        className="h-60"
+        src={urlFor(products.image).url()}
+        alt={products.title}
+      />
     </main>
   )
 }
