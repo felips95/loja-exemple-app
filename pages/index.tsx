@@ -14,7 +14,7 @@ export default function Home({ products, tags }: Props) {
         <h1 className="text-3xl">Banner</h1>
       </section>
 
-      <section className="mx-auto max-w-xs md:max-w-5xl">
+      <section className="mx-auto max-w-xs sm:max-w-md md:max-w-5xl">
         <ul className="mt-5 mb-10 grid grid-cols-2 gap-2 md:mt-10 md:flex md:justify-center md:gap-10">
           {tags.map((categorias) => (
             <li className="border" key={categorias._id}>
@@ -39,7 +39,7 @@ export default function Home({ products, tags }: Props) {
           <p>Ver Tudo</p>
         </div>
 
-        <ul className="my-8 grid grid-cols-2 gap-5 md:grid-cols-3">
+        <ul className="my-8 grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
           {products.map((produtos) => (
             <li className="rounded-sm border p-2" key={produtos._id}>
               <Link href={`/produtos/${produtos.slug.current}`}>
