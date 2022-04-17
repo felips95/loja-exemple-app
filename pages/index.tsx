@@ -14,14 +14,14 @@ export default function Home({ products, tags }: Props) {
         <h1 className="text-3xl">Banner</h1>
       </section>
 
-      <section className="mx-auto max-w-xs sm:max-w-md md:max-w-5xl">
-        <ul className="mt-5 mb-10 grid grid-cols-2 gap-2 md:mt-10 md:flex md:justify-center md:gap-10">
+      <section className="mx-auto max-w-md sm:max-w-xl md:max-w-5xl">
+        <ul className="mt-5 mb-10 grid grid-cols-2 gap-2 sm:gap-10 md:mt-10 md:flex md:justify-center">
           {tags.map((categorias) => (
             <li className="border" key={categorias._id}>
               <Link href={`/categoria/${categorias.slug.current}`}>
                 <a className="flex flex-col items-center text-center hover:underline">
                   <img
-                    className="h-20 w-20 md:h-32 md:w-32"
+                    className="h-20 w-20 sm:h-32 sm:w-32"
                     src={urlFor(categorias.image).url()}
                     alt=""
                   />
