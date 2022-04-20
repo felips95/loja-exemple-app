@@ -8,6 +8,10 @@ module.exports = {
       aspectRatio: {
         '4/3': '4/3',
       },
+      colors: {
+        princ: '#D9958F',
+        sec: '#F2B4AE',
+      },
     },
   },
   plugins: [],
