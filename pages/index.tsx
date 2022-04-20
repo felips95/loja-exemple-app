@@ -10,8 +10,8 @@ interface Props {
 
 export default function Home({ products, tags }: Props) {
   return (
-    <main className="mx-auto max-w-5xl p-3">
-      <section className="flex h-36 items-center justify-center rounded-lg bg-sec">
+    <main className="mx-auto max-w-4xl p-3">
+      <section className="flex h-52 items-center justify-center rounded-lg bg-sec md:h-72">
         <h1 className="text-3xl">Banner</h1>
       </section>
 
@@ -21,18 +21,24 @@ export default function Home({ products, tags }: Props) {
           <p className="text-sm text-gray-600">Ver Tudo</p>
         </div>
 
-        <ul className="flex gap-1">
+        <ul className="flex items-center gap-1 overflow-x-auto sm:justify-center sm:overflow-x-hidden md:gap-10">
           {tags.map((categorias) => (
             <li className="rounded-md bg-princ" key={categorias._id}>
               <Link href={`/categoria/${categorias.slug.current}`}>
                 <a className="flex flex-col items-center text-center hover:underline">
-                  <Image
-                    className="rounded-t-md"
-                    src={urlFor(categorias.image).url()}
-                    height={100}
-                    width={100}
-                  />
-                  <h1 className="m-1 font-sans text-lg">{categorias.title}</h1>
+                  <div className="w-36">
+                    <Image
+                      className="aspect-square rounded-t-md"
+                      src={urlFor(categorias.image).url()}
+                      height={500}
+                      width={500}
+                    />
+                  </div>
+                  <div>
+                    <h1 className="m-1 font-sans text-lg">
+                      {categorias.title}
+                    </h1>
+                  </div>
                 </a>
               </Link>
             </li>
@@ -57,7 +63,7 @@ export default function Home({ products, tags }: Props) {
                     height={400}
                     width={400}
                   />
-                  <div className="m-1">
+                  <div className="m-3">
                     <h1 className="text-sm">{produtos.title}</h1>
                     <span className="font-bold">35$</span>
                   </div>
