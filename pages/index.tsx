@@ -21,17 +21,17 @@ export default function Home({ products, tags }: Props) {
           <p className="text-sm text-gray-600">Ver Tudo</p>
         </div>
 
-        <ul className="flex items-center gap-1 overflow-x-auto sm:justify-center sm:overflow-x-hidden md:gap-10">
+        <ul className="flex items-center gap-1 overflow-x-auto sm:justify-center sm:overflow-x-hidden md:gap-5 lg:justify-between">
           {tags.map((categorias) => (
             <li className="rounded-md bg-princ" key={categorias._id}>
               <Link href={`/categoria/${categorias.slug.current}`}>
                 <a className="flex flex-col items-center text-center md:hover:underline">
-                  <div className="w-36">
+                  <div className="w-36 md:w-40 lg:w-48">
                     <Image
                       className="aspect-square rounded-t-md"
                       src={urlFor(categorias.image).url()}
-                      height={500}
-                      width={500}
+                      height={300}
+                      width={300}
                     />
                   </div>
                   <div>
@@ -60,8 +60,8 @@ export default function Home({ products, tags }: Props) {
                   <Image
                     className="aspect-square rounded-t-md"
                     src={urlFor(produtos.image).url()}
-                    height={400}
-                    width={400}
+                    height={700}
+                    width={700}
                   />
                   <div className="m-3">
                     <h1 className="text-sm">{produtos.title}</h1>

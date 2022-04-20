@@ -83,7 +83,7 @@ export default function Navbar() {
             />
           </svg>
           <input
-            className="block w-full"
+            className="block w-full focus:outline-none"
             type="search"
             placeholder="Pesquisa"
           />
