@@ -25,7 +25,7 @@ export default function Home({ products, tags }: Props) {
           {tags.map((categorias) => (
             <li className="rounded-md bg-princ" key={categorias._id}>
               <Link href={`/categoria/${categorias.slug.current}`}>
-                <a className="flex flex-col items-center text-center hover:underline">
+                <a className="flex flex-col items-center text-center md:hover:underline">
                   <div className="w-36">
                     <Image
                       className="aspect-square rounded-t-md"
