@@ -88,6 +88,7 @@ export async function getStaticProps() {
       products,
       tags,
     },
+    revalidate: 60,
   }
 }
 
