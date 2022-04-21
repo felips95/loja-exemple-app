@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import Image from 'next/image'
 import { sanityClient, urlFor } from '../../lib/config'
 import { Product } from '../../typings'
 
@@ -8,14 +9,15 @@ interface Test {
 
 export default function oneProduct({ products }: Test) {
   return (
-    <main className="mx-auto max-w-5xl pt-10">
-      <h1>{products.title}</h1>
-      <p>{products.category[0].title}</p>
-      <img
-        className="h-60"
+    <main className="mx-auto max-w-4xl p-3">
+      <Image
+        className="rounded-xl"
         src={urlFor(products.image).url()}
         alt={products.title}
+        width={500}
+        height={500}
       />
+      <h1>{products.title}</h1>
     </main>
   )
 }

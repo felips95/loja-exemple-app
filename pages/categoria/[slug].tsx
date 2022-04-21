@@ -2,6 +2,7 @@ import { sanityClient, urlFor } from '../../lib/config'
 import { GetStaticProps } from 'next'
 import { Product } from '../../typings'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Test {
   tag: Product
@@ -9,24 +10,34 @@ interface Test {
 
 export default function categoria({ tag }: Test) {
   return (
-    <main className="mx-auto max-w-5xl pt-10">
-      <h1>{tag.title}</h1>
-      <ul className="my-10 grid grid-cols-3 gap-5">
-        {tag.produtos.map((prod) => (
-          <li className="rounded-sm border p-2" key={prod._id}>
-            <Link href={`/produtos/${prod.slug.current}`}>
-              <a>
-                <img
-                  className="aspect-4/3 w-full object-cover"
-                  src={urlFor(prod.image).url()}
-                  alt={prod.title}
-                />
-                <h1>{prod.title}</h1>
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <main className="mx-auto min-h-screen max-w-4xl p-3">
+      <section>
+        <div>
+          <h1 className="py-7 text-lg font-bold">{tag.title}</h1>
+        </div>
+
+        <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+          {tag.produtos.map((prod) => (
+            <li className="rounded-xl bg-princ" key={prod._id}>
+              <Link href={`/produtos/${prod.slug.current}`}>
+                <a>
+                  <Image
+                    className="aspect-square rounded-t-xl"
+                    src={urlFor(prod.image).url()}
+                    alt={prod.title}
+                    height={700}
+                    width={700}
+                  />
+                  <div className="m-3">
+                    <h1 className="text-md">{prod.title}</h1>
+                    <span className="font-bold">35$</span>
+                  </div>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   )
 }
