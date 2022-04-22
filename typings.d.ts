@@ -17,15 +17,15 @@ export interface Product {
   ]
   produtos: [
     {
-      title: string
       _id: string
-      slug: {
-        current: string
-      }
+      title: string
       image: {
         asset: {
           url: string
         }
+      }
+      slug: {
+        current: string
       }
     }
   ]
@@ -45,4 +45,14 @@ export interface Tags {
   }
 
   body: [object]
+}
+
+export interface Col {
+  title: string
+  _id: string
+  produtos: [
+    {
+      title: string
+    }
+  ]
 }

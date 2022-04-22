@@ -9,8 +9,8 @@ module.exports = {
         '4/1': '4/1',
       },
       colors: {
-        princ: '#F29985',
-        sec: '#F2C1AE',
+        sec: '#ffc7da',
+        princ: '#e3a3af',
       },
     },
   },

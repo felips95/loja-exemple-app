@@ -2,14 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { sanityClient, urlFor } from '../lib/config'
-import { Product, Tags } from '../typings'
+import { Col, Product, Tags } from '../typings'
 
 interface Props {
   products: [Product]
   tags: [Tags]
+  col: [Col]
 }
 
-export default function Home({ products, tags }: Props) {
+export default function Home({ products, tags, col }: Props) {
+  console.log(col)
   return (
     <div>
       <Head>

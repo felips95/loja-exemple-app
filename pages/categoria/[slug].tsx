@@ -78,6 +78,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       tag,
     },
+    revalidate: 180,
   }
 }
 
