@@ -1,6 +1,8 @@
 export interface Product {
   _id: string
   title: string
+  description: string
+  price: number
   slug: {
     current: string
   }
@@ -45,14 +47,4 @@ export interface Tags {
   }
 
   body: [object]
-}
-
-export interface Col {
-  title: string
-  _id: string
-  produtos: [
-    {
-      title: string
-    }
-  ]
 }

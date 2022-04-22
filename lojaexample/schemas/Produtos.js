@@ -18,6 +18,16 @@ export default {
       },
     },
     {
+      name: 'description',
+      title: 'Descrição',
+      type: 'string',
+    },
+    {
+      name: 'price',
+      title: 'Preço',
+      type: 'number',
+    },
+    {
       name: 'image',
       title: 'Imagem',
       type: 'image',

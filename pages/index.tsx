@@ -2,16 +2,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { sanityClient, urlFor } from '../lib/config'
-import { Col, Product, Tags } from '../typings'
+import { Product, Tags } from '../typings'
 
 interface Props {
   products: [Product]
   tags: [Tags]
-  col: [Col]
 }
 
-export default function Home({ products, tags, col }: Props) {
-  console.log(col)
+export default function Home({ products, tags }: Props) {
   return (
     <div>
       <Head>
@@ -22,7 +20,6 @@ export default function Home({ products, tags, col }: Props) {
         <section>
           <div className="flex justify-between py-7">
             <h1 className="text-lg font-bold">Categorias</h1>
-            <p className="text-sm text-gray-600">Ver Tudo</p>
           </div>
 
           <ul className="flex items-center gap-1 overflow-x-auto sm:justify-center sm:overflow-x-hidden md:gap-5 lg:justify-between">
@@ -53,7 +50,13 @@ export default function Home({ products, tags, col }: Props) {
         <section>
           <div className="flex justify-between py-7">
             <h1 className="text-lg font-bold">Produtos</h1>
-            <p className="text-sm text-gray-600">Ver Tudo</p>
+            <Link href={`/produtos`}>
+              <a>
+                <p className="text-sm text-gray-600 hover:underline">
+                  Ver Tudo
+                </p>
+              </a>
+            </Link>
           </div>
 
           <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">

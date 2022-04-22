@@ -18,10 +18,22 @@ export default {
       },
     },
     {
-      name: 'produtos',
+      name: 'prod',
       title: 'Produtos',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'produtos' } }],
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'produtos',
+              title: 'Produtos',
+              type: 'reference',
+              to: [{ type: 'produtos' }],
+            },
+          ],
+        },
+      ],
     },
   ],
 }
