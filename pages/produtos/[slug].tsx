@@ -28,7 +28,7 @@ export default function oneProduct({ products, all }: Test) {
             <h1 className="text-3xl font-bold">{products.title}</h1>
             <p>{products.category[0].title}</p>
             <p className="my-5 text-xl font-bold">${products.price}</p>
-            <p className="mt-5">{products.description}</p>
+            <p>{products.description}</p>
           </div>
           <div className="flex justify-center">
             <button className="mt-20 rounded-xl bg-princ px-10 py-3 font-bold">
@@ -48,7 +48,7 @@ export default function oneProduct({ products, all }: Test) {
           </Link>
         </div>
 
-        <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+        <ul className=" grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
           {all.map((all) => (
             <li className="rounded-xl bg-princ" key={all._id}>
               <Link href={`/produtos/${all.slug.current}`}>
@@ -131,4 +131,4 @@ const allQuery = `*[_type=="produtos"]{
     _id,
   }
   
-}[0...6]`
+}[0...4]`

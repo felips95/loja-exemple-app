@@ -22,7 +22,7 @@ export default function Home({ products, tags }: Props) {
             <h1 className="text-lg font-bold">Categorias</h1>
           </div>
 
-          <ul className="flex items-center gap-1 overflow-x-auto sm:justify-center sm:overflow-x-hidden md:gap-5 lg:justify-between">
+          <ul className="flex items-center gap-3 overflow-x-auto sm:justify-center sm:overflow-x-hidden lg:justify-between">
             {tags.map((categorias) => (
               <li className="rounded-xl bg-princ" key={categorias._id}>
                 <Link href={`/categoria/${categorias.slug.current}`}>
@@ -31,8 +31,8 @@ export default function Home({ products, tags }: Props) {
                       <Image
                         className="aspect-square rounded-t-xl"
                         src={urlFor(categorias.image).url()}
-                        height={300}
-                        width={300}
+                        height={700}
+                        width={700}
                       />
                     </div>
                     <div>
@@ -59,7 +59,7 @@ export default function Home({ products, tags }: Props) {
             </Link>
           </div>
 
-          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4">
             {products.map((produtos) => (
               <li className="rounded-xl bg-princ" key={produtos._id}>
                 <Link href={`/produtos/${produtos.slug.current}`}>
@@ -72,7 +72,7 @@ export default function Home({ products, tags }: Props) {
                     />
                     <div className="m-3">
                       <h1 className="text-md">{produtos.title}</h1>
-                      <span className="font-bold">35$</span>
+                      <span className="font-bold">${produtos.price}</span>
                     </div>
                   </a>
                 </Link>
@@ -101,6 +101,7 @@ const productsQuery = `*[_type=="produtos"]{
   _id,
   title,
   slug,
+  price,
   image,  
   category[]->{
     title,

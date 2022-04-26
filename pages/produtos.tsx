@@ -16,7 +16,7 @@ export default function allProducts({ products }: Props) {
             <h1 className="text-lg font-bold">Todos os Produtos</h1>
           </div>
 
-          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
             {products.map((produtos) => (
               <li className="rounded-xl bg-princ" key={produtos._id}>
                 <Link href={`/produtos/${produtos.slug.current}`}>
