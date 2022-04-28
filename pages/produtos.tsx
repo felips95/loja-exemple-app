@@ -29,7 +29,7 @@ export default function allProducts({ products }: Props) {
                     />
                     <div className="m-3">
                       <h1 className="text-md">{produtos.title}</h1>
-                      <span className="font-bold">35$</span>
+                      <span className="font-bold">${produtos.price}</span>
                     </div>
                   </a>
                 </Link>
@@ -57,6 +57,7 @@ const productsQuery = `*[_type=="produtos"]{
     title,
     slug,
     image,  
+    price,
     category[]->{
       title,
       _id,
