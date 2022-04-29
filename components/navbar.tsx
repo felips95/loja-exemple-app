@@ -38,19 +38,7 @@ export default function Navbar() {
             <a className="w-1/3 text-center font-display text-3xl">Condessa</a>
           </Link>
 
-          <div className="flex w-1/3 items-center justify-end gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clipRule="evenodd"
-              />
-            </svg>
+          <div className="flex w-1/3 items-center justify-end">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
@@ -63,15 +51,15 @@ export default function Navbar() {
                 clipRule="evenodd"
               />
             </svg>
-            <div className="rounded-full bg-princ py-0.5 px-1.5 text-center">
-              <p>25</p>
+            <div className="rounded-full bg-princ py-1 px-1.5 text-center">
+              <p className="font-bold">25</p>
             </div>
           </div>
         </header>
       </div>
 
       <nav>
-        <section className="flex justify-center gap-10 py-3">
+        <section className="flex justify-center gap-10 py-3 ">
           <Link href={`/categoria/colares`}>
             <a>Colares</a>
           </Link>
@@ -90,7 +78,7 @@ export default function Navbar() {
       <div className="flex justify-center gap-5 pt-2 md:hidden">
         <div className="flex rounded-full bg-white px-3 py-1">
           <input
-            className="text-sm focus:outline-none"
+            className="focus:outline-none"
             type="search"
             placeholder="Faça sua Pesquisa!"
           />

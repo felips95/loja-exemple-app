@@ -39,21 +39,21 @@ export default function oneProduct({ products, all }: Test) {
       </section>
 
       <section>
-        <div className="my-7 flex justify-between">
+        <div className="my-7 flex items-center justify-between gap-2">
           <h1 className="text-lg font-bold">Produtos que talvez você goste</h1>
           <Link href={`/produtos`}>
             <a>
-              <p className="text-sm text-gray-600 hover:underline">Ver Tudo</p>
+              <p className="text-sm text-gray-700 hover:underline">Ver Tudo</p>
             </a>
           </Link>
         </div>
 
-        <ul className="flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-4">
+        <ul className="flex gap-2 overflow-x-auto md:grid md:grid-cols-4 md:gap-5">
           {all.map((prod) => (
             <li className="rounded " key={prod._id}>
               <Link href={`/produtos/${prod.slug.current}`}>
                 <a className="flex flex-col">
-                  <div className="w-60 md:w-full">
+                  <div className="w-40 sm:w-52 md:w-full">
                     <Image
                       className="rounded-lg"
                       src={urlFor(prod.image).url()}

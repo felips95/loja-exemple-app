@@ -28,23 +28,23 @@ export default function Home({ products, tags, news }: Props) {
         </section>
 
         <section className="border-b border-black">
-          <div className="flex justify-between py-7">
-            <h1 className="text-xl font-bold">Produtos</h1>
+          <div className="my-7 flex items-center justify-between gap-2">
+            <h1 className="text-lg font-bold">Produtos</h1>
             <Link href={`/produtos`}>
               <a>
-                <p className="text-sm text-gray-600 hover:underline">
+                <p className="text-sm text-gray-700 hover:underline">
                   Ver Tudo
                 </p>
               </a>
             </Link>
           </div>
 
-          <ul className="flex items-center gap-2 overflow-x-auto md:grid md:grid-cols-3 md:gap-5">
+          <ul className="flex gap-2 overflow-x-auto md:grid md:grid-cols-3 md:gap-5">
             {products.map((prod) => (
               <li className="rounded " key={prod._id}>
                 <Link href={`/produtos/${prod.slug.current}`}>
                   <a className="flex flex-col">
-                    <div className="w-52 md:w-full">
+                    <div className="w-40 sm:w-52 md:w-full">
                       <Image
                         className="rounded-lg"
                         src={urlFor(prod.image).url()}
@@ -71,7 +71,7 @@ export default function Home({ products, tags, news }: Props) {
             </h2>
             <div className="flex gap-3">
               <input
-                className="rounded-lg px-2 py-1 text-sm"
+                className="rounded-lg px-2 py-1"
                 type="email"
                 placeholder="Email"
               />
@@ -85,23 +85,23 @@ export default function Home({ products, tags, news }: Props) {
         <section>
           {news.map((vam) => (
             <div key={vam._id}>
-              <div className="flex justify-between py-7">
-                <h1 className=" text-xl font-bold">{vam.title}</h1>
+              <div className="my-7 flex items-center justify-between gap-2">
+                <h1 className="text-lg font-bold">{vam.title}</h1>
                 <Link href={`/${vam.slug.current}`}>
                   <a>
-                    <p className="text-sm text-gray-600 hover:underline">
+                    <p className="text-sm text-gray-700 hover:underline">
                       Ver Tudo
                     </p>
                   </a>
                 </Link>
               </div>
 
-              <ul className=" flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-3">
+              <ul className=" flex gap-2 overflow-x-auto md:grid md:grid-cols-3 md:gap-5">
                 {vam.produtos.map((pl) => (
                   <li className="rounded" key={pl._id}>
                     <Link href={`/produtos/${pl.slug.current}`}>
                       <a className="flex flex-col">
-                        <div className="w-52 md:w-full">
+                        <div className="w-40 sm:w-52 md:w-full">
                           <Image
                             className=" rounded-lg"
                             src={urlFor(pl.image).url()}
