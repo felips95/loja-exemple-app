@@ -16,20 +16,20 @@ export default function allProducts({ products }: Props) {
             <h1 className="text-lg font-bold">Todos os Produtos</h1>
           </div>
 
-          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
-            {products.map((produtos) => (
-              <li className="rounded-xl bg-princ" key={produtos._id}>
-                <Link href={`/produtos/${produtos.slug.current}`}>
+          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+            {products.map((prod) => (
+              <li key={prod._id}>
+                <Link href={`/produtos/${prod.slug.current}`}>
                   <a>
                     <Image
-                      className="aspect-square rounded-t-xl"
-                      src={urlFor(produtos.image).url()}
-                      height={700}
-                      width={700}
+                      className="aspect-square rounded-lg "
+                      src={urlFor(prod.image).url()}
+                      height={600}
+                      width={600}
                     />
                     <div className="m-3">
-                      <h1 className="text-md">{produtos.title}</h1>
-                      <span className="font-bold">${produtos.price}</span>
+                      <h1 className="text-md">{prod.title}</h1>
+                      <span className="font-bold">${prod.price}</span>
                     </div>
                   </a>
                 </Link>

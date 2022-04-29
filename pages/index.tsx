@@ -39,12 +39,12 @@ export default function Home({ products, tags, news }: Props) {
             </Link>
           </div>
 
-          <ul className="flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-3">
+          <ul className="flex items-center gap-2 overflow-x-auto md:grid md:grid-cols-3 md:gap-5">
             {products.map((prod) => (
               <li className="rounded " key={prod._id}>
                 <Link href={`/produtos/${prod.slug.current}`}>
                   <a className="flex flex-col">
-                    <div className="w-60 md:w-full">
+                    <div className="w-52 md:w-full">
                       <Image
                         className="rounded-lg"
                         src={urlFor(prod.image).url()}
@@ -101,7 +101,7 @@ export default function Home({ products, tags, news }: Props) {
                   <li className="rounded" key={pl._id}>
                     <Link href={`/produtos/${pl.slug.current}`}>
                       <a className="flex flex-col">
-                        <div className="w-60 md:w-full">
+                        <div className="w-52 md:w-full">
                           <Image
                             className=" rounded-lg"
                             src={urlFor(pl.image).url()}

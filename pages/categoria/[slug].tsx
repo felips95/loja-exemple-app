@@ -16,19 +16,17 @@ export default function categoria({ tag }: Test) {
           <h1 className="py-7 text-lg font-bold">{tag.title}</h1>
         </div>
 
-        <ul className="flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-3">
+        <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
           {tag.produtos.map((prod) => (
-            <li className="rounded " key={prod._id}>
+            <li key={prod._id}>
               <Link href={`/produtos/${prod.slug.current}`}>
-                <a className="flex flex-col">
-                  <div className="w-60 md:w-full">
-                    <Image
-                      className="rounded-lg"
-                      src={urlFor(prod.image).url()}
-                      height={700}
-                      width={700}
-                    />
-                  </div>
+                <a>
+                  <Image
+                    className="aspect-square rounded-lg "
+                    src={urlFor(prod.image).url()}
+                    height={600}
+                    width={600}
+                  />
                   <div className="m-3">
                     <h1 className="text-md">{prod.title}</h1>
                     <span className="font-bold">${prod.price}</span>

@@ -19,20 +19,20 @@ export default function Collections({ products }: Props) {
             </div>
           </div>
 
-          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
-            {products.produtos.map((pl) => (
-              <li className="rounded-xl bg-princ" key={pl._id}>
-                <Link href={`/produtos/${pl.slug.current}`}>
+          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+            {products.produtos.map((prod) => (
+              <li key={prod._id}>
+                <Link href={`/produtos/${prod.slug.current}`}>
                   <a>
                     <Image
-                      className="aspect-square rounded-t-xl"
-                      src={urlFor(pl.image).url()}
-                      height={700}
-                      width={700}
+                      className="aspect-square rounded-lg "
+                      src={urlFor(prod.image).url()}
+                      height={600}
+                      width={600}
                     />
                     <div className="m-3">
-                      <h1 className="text-md">{pl.title}</h1>
-                      <span className="font-bold">${pl.price}</span>
+                      <h1 className="text-md">{prod.title}</h1>
+                      <span className="font-bold">${prod.price}</span>
                     </div>
                   </a>
                 </Link>
