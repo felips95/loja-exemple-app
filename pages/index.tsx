@@ -21,33 +21,65 @@ export default function Home({ products, tags, news }: Props) {
       </Head>
       <main className="mx-auto max-w-4xl p-3">
         <section>
-          <div className="flex py-7">
-            <h1 className="text-xl font-bold">Categorias</h1>
+          <div className="flex h-72 flex-col items-center justify-center gap-4 rounded-lg bg-princ">
+            <h1 className="font-display text-7xl">Promoção</h1>
+            <p className="text-lg">Compre com 35% de desconto</p>
+          </div>
+        </section>
+
+        <section className="border-b border-black">
+          <div className="flex justify-between py-7">
+            <h1 className="text-xl font-bold">Produtos</h1>
+            <Link href={`/produtos`}>
+              <a>
+                <p className="text-sm text-gray-600 hover:underline">
+                  Ver Tudo
+                </p>
+              </a>
+            </Link>
           </div>
 
-          <ul className="flex items-center gap-4 overflow-x-auto sm:justify-center sm:overflow-x-hidden lg:justify-center">
-            {tags.map((categorias) => (
-              <li className="rounded-xl bg-princ" key={categorias._id}>
-                <Link href={`/categoria/${categorias.slug.current}`}>
-                  <a className="flex flex-col items-center text-center">
-                    <div className="w-36">
+          <ul className="flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-3">
+            {products.map((prod) => (
+              <li className="rounded " key={prod._id}>
+                <Link href={`/produtos/${prod.slug.current}`}>
+                  <a className="flex flex-col">
+                    <div className="w-60 md:w-full">
                       <Image
-                        className="aspect-square rounded-t-xl"
-                        src={urlFor(categorias.image).url()}
+                        className="rounded-lg"
+                        src={urlFor(prod.image).url()}
                         height={700}
                         width={700}
                       />
                     </div>
-                    <div>
-                      <h1 className="m-1 font-sans text-lg font-bold">
-                        {categorias.title}
-                      </h1>
+                    <div className="m-3">
+                      <h1 className="text-md">{prod.title}</h1>
+                      <span className="font-bold">${prod.price}</span>
                     </div>
                   </a>
                 </Link>
               </li>
             ))}
           </ul>
+        </section>
+
+        <section>
+          <div className="mt-5 flex h-80 flex-col items-center justify-center gap-10 rounded-lg bg-slate-400">
+            <h2 className="w-3/4 text-center text-xl">
+              Se inscreva-se no nosso Newsletter, e receba 30% de desconto na
+              sua primeira compra.
+            </h2>
+            <div className="flex gap-3">
+              <input
+                className="rounded-lg px-2 py-1 text-sm"
+                type="email"
+                placeholder="Email"
+              />
+              <button className="rounded-lg bg-red-200 px-2 py-1">
+                Enviar
+              </button>
+            </div>
+          </div>
         </section>
 
         <section>
@@ -64,17 +96,20 @@ export default function Home({ products, tags, news }: Props) {
                 </Link>
               </div>
 
-              <ul className=" grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
+              <ul className=" flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-3">
                 {vam.produtos.map((pl) => (
-                  <li className="rounded-xl bg-princ" key={pl._id}>
+                  <li className="rounded" key={pl._id}>
                     <Link href={`/produtos/${pl.slug.current}`}>
-                      <a>
-                        <Image
-                          className="aspect-square rounded-t-xl"
-                          src={urlFor(pl.image).url()}
-                          height={700}
-                          width={700}
-                        />
+                      <a className="flex flex-col">
+                        <div className="w-60 md:w-full">
+                          <Image
+                            className=" rounded-lg"
+                            src={urlFor(pl.image).url()}
+                            height={700}
+                            width={700}
+                          />
+                        </div>
+
                         <div className="m-3">
                           <h1 className="text-md">{pl.title}</h1>
                           <span className="font-bold">${pl.price}</span>
@@ -86,41 +121,6 @@ export default function Home({ products, tags, news }: Props) {
               </ul>
             </div>
           ))}
-        </section>
-
-        <section>
-          <div className="flex justify-between py-7">
-            <h1 className="text-xl font-bold">Produtos</h1>
-            <Link href={`/produtos`}>
-              <a>
-                <p className="text-sm text-gray-600 hover:underline">
-                  Ver Tudo
-                </p>
-              </a>
-            </Link>
-          </div>
-
-          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
-            {products.map((prod) => (
-              <li className="rounded-xl bg-princ" key={prod._id}>
-                <Link href={`/categoria/${prod.slug.current}`}>
-                  <a>
-                    <Image
-                      className="aspect-square rounded-t-xl"
-                      src={urlFor(prod.image).url()}
-                      height={700}
-                      width={700}
-                    />
-
-                    <div className="m-3">
-                      <h1 className="text-md">{prod.title}</h1>
-                      <span className="font-bold">${prod.price}</span>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </section>
       </main>
     </div>
@@ -152,7 +152,7 @@ const newQuery = `*[_type=='colections'][0...1]{
   _id,
   title,
   slug,
-  produtos[0...4]->{
+  produtos[0...6]->{
     title,
     _id,
     image,
@@ -172,4 +172,4 @@ const productsQuery = `*[_type=="produtos"]{
     _id,
   }
   
-}[0...4]`
+}[0...6]`

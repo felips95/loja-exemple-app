@@ -13,7 +13,7 @@ export default function oneProduct({ products, all }: Test) {
   console.log(all)
   return (
     <main className="mx-auto max-w-4xl p-3">
-      <section className="flex flex-col items-center justify-center gap-10 border-b py-7 md:grid md:grid-cols-2">
+      <section className="flex flex-col items-center justify-center gap-10 border-b border-black py-7 md:grid md:grid-cols-2">
         <div>
           <Image
             className="aspect-square rounded-xl"
@@ -48,20 +48,22 @@ export default function oneProduct({ products, all }: Test) {
           </Link>
         </div>
 
-        <ul className=" grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
-          {all.map((all) => (
-            <li className="rounded-xl bg-princ" key={all._id}>
-              <Link href={`/produtos/${all.slug.current}`}>
-                <a>
-                  <Image
-                    className="aspect-square rounded-t-xl"
-                    src={urlFor(all.image).url()}
-                    height={700}
-                    width={700}
-                  />
+        <ul className="flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-4">
+          {all.map((prod) => (
+            <li className="rounded " key={prod._id}>
+              <Link href={`/produtos/${prod.slug.current}`}>
+                <a className="flex flex-col">
+                  <div className="w-60 md:w-full">
+                    <Image
+                      className="rounded-lg"
+                      src={urlFor(prod.image).url()}
+                      height={700}
+                      width={700}
+                    />
+                  </div>
                   <div className="m-3">
-                    <h1 className="text-md">{all.title}</h1>
-                    <span className="font-bold">35$</span>
+                    <h1 className="text-md">{prod.title}</h1>
+                    <span className="font-bold">${prod.price}</span>
                   </div>
                 </a>
               </Link>
@@ -124,6 +126,7 @@ const productsQuery = `*[_type == "produtos" && slug.current == $slug][0]{
 const allQuery = `*[_type=="produtos"]{
   _id,
   title,
+  price,
   slug,
   image,  
   category[]->{

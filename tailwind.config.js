@@ -9,8 +9,11 @@ module.exports = {
         '4/1': '4/1',
       },
       colors: {
-        sec: '#ffc7da',
-        princ: '#e3a3af',
+        princ: '#DC8B95',
+      },
+      fontFamily: {
+        display: ['Marcellus SC', 'serif'],
+        body: ['Noto Sans', 'sans-serif'],
       },
     },
   },

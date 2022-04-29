@@ -16,21 +16,22 @@ export default function categoria({ tag }: Test) {
           <h1 className="py-7 text-lg font-bold">{tag.title}</h1>
         </div>
 
-        <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+        <ul className="flex items-center gap-5 overflow-x-auto md:grid md:grid-cols-3">
           {tag.produtos.map((prod) => (
-            <li className="rounded-xl bg-princ" key={prod._id}>
+            <li className="rounded " key={prod._id}>
               <Link href={`/produtos/${prod.slug.current}`}>
-                <a>
-                  <Image
-                    className="aspect-square rounded-t-xl"
-                    src={urlFor(prod.image).url()}
-                    alt={prod.title}
-                    height={700}
-                    width={700}
-                  />
+                <a className="flex flex-col">
+                  <div className="w-60 md:w-full">
+                    <Image
+                      className="rounded-lg"
+                      src={urlFor(prod.image).url()}
+                      height={700}
+                      width={700}
+                    />
+                  </div>
                   <div className="m-3">
                     <h1 className="text-md">{prod.title}</h1>
-                    <span className="font-bold">35$</span>
+                    <span className="font-bold">${prod.price}</span>
                   </div>
                 </a>
               </Link>
@@ -88,6 +89,7 @@ const tagQuery = `*[_type=='tags' && slug.current == $keyword][0]{
   slug,
 "produtos":*[_type=='produtos' && $keyword in category[]->slug.current]{
   title,
+  price,
   slug,
   _id,
   image,
