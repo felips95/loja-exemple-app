@@ -1,18 +1,16 @@
-import { Console } from 'console'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CardRow, ImageConteiner } from '../components/card'
 import { sanityClient, urlFor } from '../lib/config'
 import { Product, Tags } from '../typings'
 
 interface Props {
   products: [Product]
-  tags: [Tags]
   news: [Product]
 }
 
-export default function Home({ products, tags, news }: Props) {
-  console.log(news)
+export default function Home({ products, news }: Props) {
   return (
     <div>
       <Head>
@@ -39,19 +37,19 @@ export default function Home({ products, tags, news }: Props) {
             </Link>
           </div>
 
-          <ul className="flex gap-2 overflow-x-auto md:grid md:grid-cols-3 md:gap-5">
+          <CardRow>
             {products.map((prod) => (
-              <li className="rounded " key={prod._id}>
+              <li key={prod._id}>
                 <Link href={`/produtos/${prod.slug.current}`}>
-                  <a className="flex flex-col">
-                    <div className="w-40 sm:w-52 md:w-full">
+                  <a>
+                    <ImageConteiner>
                       <Image
                         className="rounded-lg"
                         src={urlFor(prod.image).url()}
                         height={700}
                         width={700}
                       />
-                    </div>
+                    </ImageConteiner>
                     <div className="m-3">
                       <h1 className="text-md">{prod.title}</h1>
                       <span className="font-bold">${prod.price}</span>
@@ -60,7 +58,7 @@ export default function Home({ products, tags, news }: Props) {
                 </Link>
               </li>
             ))}
-          </ul>
+          </CardRow>
         </section>
 
         <section>
@@ -69,14 +67,14 @@ export default function Home({ products, tags, news }: Props) {
               Se inscreva-se no nosso Newsletter, e receba 30% de desconto na
               sua primeira compra.
             </h2>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 md:flex-row">
               <input
                 className="rounded-lg px-2 py-1"
                 type="email"
                 placeholder="Email"
               />
-              <button className="rounded-lg bg-red-200 px-2 py-1">
-                Enviar
+              <button className="rounded-lg bg-princ px-2 py-1 text-sm">
+                Inscrever-se
               </button>
             </div>
           </div>
@@ -96,19 +94,19 @@ export default function Home({ products, tags, news }: Props) {
                 </Link>
               </div>
 
-              <ul className=" flex gap-2 overflow-x-auto md:grid md:grid-cols-3 md:gap-5">
+              <CardRow>
                 {vam.produtos.map((pl) => (
                   <li className="rounded" key={pl._id}>
                     <Link href={`/produtos/${pl.slug.current}`}>
                       <a className="flex flex-col">
-                        <div className="w-40 sm:w-52 md:w-full">
+                        <ImageConteiner>
                           <Image
                             className=" rounded-lg"
                             src={urlFor(pl.image).url()}
                             height={700}
                             width={700}
                           />
-                        </div>
+                        </ImageConteiner>
 
                         <div className="m-3">
                           <h1 className="text-md">{pl.title}</h1>
@@ -118,7 +116,7 @@ export default function Home({ products, tags, news }: Props) {
                     </Link>
                   </li>
                 ))}
-              </ul>
+              </CardRow>
             </div>
           ))}
         </section>
@@ -128,25 +126,16 @@ export default function Home({ products, tags, news }: Props) {
 }
 
 export async function getStaticProps() {
-  const tags = await sanityClient.fetch(tagsQuery)
   const news = await sanityClient.fetch(newQuery)
   const products = await sanityClient.fetch(productsQuery)
   return {
     props: {
       products,
-      tags,
       news,
     },
     revalidate: 60,
   }
 }
-
-const tagsQuery = `*[_type=="tags"]{
-  _id,
-  title,
-  slug,
-  image,
-}`
 
 const newQuery = `*[_type=='colections'][0...1]{
   _id,

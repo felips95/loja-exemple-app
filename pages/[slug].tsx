@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Card } from '../components/card'
 import { sanityClient, urlFor } from '../lib/config'
 import { Product } from '../typings'
 
@@ -19,7 +20,7 @@ export default function Collections({ products }: Props) {
             </div>
           </div>
 
-          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+          <Card>
             {products.produtos.map((prod) => (
               <li key={prod._id}>
                 <Link href={`/produtos/${prod.slug.current}`}>
@@ -38,7 +39,7 @@ export default function Collections({ products }: Props) {
                 </Link>
               </li>
             ))}
-          </ul>
+          </Card>
         </section>
       </main>
     </div>

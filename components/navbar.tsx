@@ -38,7 +38,7 @@ export default function Navbar() {
             <a className="w-1/3 text-center font-display text-3xl">Condessa</a>
           </Link>
 
-          <div className="flex w-1/3 items-center justify-end">
+          <div className="flex w-1/3 items-center justify-end gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
@@ -76,7 +76,7 @@ export default function Navbar() {
       </nav>
 
       <div className="flex justify-center gap-5 pt-2 md:hidden">
-        <div className="flex rounded-full bg-white px-3 py-1">
+        <div className="flex items-center rounded-full bg-white px-3 py-1">
           <input
             className="focus:outline-none"
             type="search"

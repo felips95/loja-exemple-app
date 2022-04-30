@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { sanityClient, urlFor } from '../lib/config'
 import { Product } from '../typings'
+import { Card } from '../components/card'
 
 interface Props {
   products: [Product]
@@ -16,7 +17,7 @@ export default function allProducts({ products }: Props) {
             <h1 className="text-lg font-bold">Todos os Produtos</h1>
           </div>
 
-          <ul className=" grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-5">
+          <Card>
             {products.map((prod) => (
               <li key={prod._id}>
                 <Link href={`/produtos/${prod.slug.current}`}>
@@ -35,7 +36,7 @@ export default function allProducts({ products }: Props) {
                 </Link>
               </li>
             ))}
-          </ul>
+          </Card>
         </section>
       </main>
     </div>

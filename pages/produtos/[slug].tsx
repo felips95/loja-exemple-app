@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CardRow, ImageConteiner } from '../../components/card'
 import { sanityClient, urlFor } from '../../lib/config'
 import { Product } from '../../typings'
 
@@ -48,19 +49,19 @@ export default function oneProduct({ products, all }: Test) {
           </Link>
         </div>
 
-        <ul className="flex gap-2 overflow-x-auto md:grid md:grid-cols-4 md:gap-5">
+        <CardRow>
           {all.map((prod) => (
             <li className="rounded " key={prod._id}>
               <Link href={`/produtos/${prod.slug.current}`}>
                 <a className="flex flex-col">
-                  <div className="w-40 sm:w-52 md:w-full">
+                  <ImageConteiner>
                     <Image
                       className="rounded-lg"
                       src={urlFor(prod.image).url()}
                       height={700}
                       width={700}
                     />
-                  </div>
+                  </ImageConteiner>
                   <div className="m-3">
                     <h1 className="text-md">{prod.title}</h1>
                     <span className="font-bold">${prod.price}</span>
@@ -69,7 +70,7 @@ export default function oneProduct({ products, all }: Test) {
               </Link>
             </li>
           ))}
-        </ul>
+        </CardRow>
       </section>
     </main>
   )
@@ -92,7 +93,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
