@@ -1,7 +1,8 @@
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { CardRow, ImageConteiner } from '../../components/card'
+import { CardRow } from '../../components/cardrow'
+
 import { sanityClient, urlFor } from '../../lib/config'
 import { Product } from '../../typings'
 
@@ -22,6 +23,7 @@ export default function oneProduct({ products, all }: Test) {
             alt={products.title}
             width={500}
             height={500}
+            priority={true}
           />
         </div>
         <div>
@@ -49,28 +51,7 @@ export default function oneProduct({ products, all }: Test) {
           </Link>
         </div>
 
-        <CardRow>
-          {all.map((prod) => (
-            <li className="rounded " key={prod._id}>
-              <Link href={`/produtos/${prod.slug.current}`}>
-                <a className="flex flex-col">
-                  <ImageConteiner>
-                    <Image
-                      className="rounded-lg"
-                      src={urlFor(prod.image).url()}
-                      height={700}
-                      width={700}
-                    />
-                  </ImageConteiner>
-                  <div className="m-3">
-                    <h1 className="text-md">{prod.title}</h1>
-                    <span className="font-bold">${prod.price}</span>
-                  </div>
-                </a>
-              </Link>
-            </li>
-          ))}
-        </CardRow>
+        <CardRow products={all} />
       </section>
     </main>
   )
@@ -135,4 +116,4 @@ const allQuery = `*[_type=="produtos"]{
     _id,
   }
   
-}[0...4]`
+}[0...6]`

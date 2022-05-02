@@ -1,40 +1,19 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { Search } from './searchbar'
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
-  const toggle = () => setOpen((open) => !open)
-
   return (
     <div>
       <div className="border-b border-black p-3">
         <header className="mx-auto flex max-w-4xl items-center justify-between py-3">
           <div className="hidden w-1/3 gap-5 md:flex">
-            <div className="flex rounded-full bg-white px-3 py-1">
-              <input
-                className="w-40 text-sm focus:outline-none"
-                type="search"
-                placeholder="Faça sua Pesquisa!"
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-            <div className=" border-r border-black">
+            <Search />
+            <div className="border-r border-black">
               <p className="mr-2">PT</p>
             </div>
           </div>
 
-          <Link href={'/'}>
+          <Link href={`/`}>
             <a className="w-1/3 text-center font-display text-3xl">Condessa</a>
           </Link>
 
@@ -75,27 +54,9 @@ export default function Navbar() {
         </section>
       </nav>
 
-      <div className="flex justify-center gap-5 pt-2 md:hidden">
-        <div className="flex items-center rounded-full bg-white px-3 py-1">
-          <input
-            className="focus:outline-none"
-            type="search"
-            placeholder="Faça sua Pesquisa!"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-gray-400"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </div>
-      </div>
+      <section className="flex justify-center gap-5 pt-2 md:hidden">
+        <Search />
+      </section>
     </div>
   )
 }

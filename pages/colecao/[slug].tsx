@@ -1,15 +1,9 @@
 import { GetStaticProps } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Card } from '../components/card'
-import { sanityClient, urlFor } from '../lib/config'
-import { Product } from '../typings'
+import { Card } from '../../components/card'
+import { sanityClient } from '../../lib/config'
+import { Product } from '../../typings'
 
-interface Props {
-  products: Product
-}
-
-export default function Collections({ products }: Props) {
+export default function Collections({ products }: any) {
   return (
     <div>
       <main className="mx-auto max-w-4xl p-3">
@@ -20,26 +14,7 @@ export default function Collections({ products }: Props) {
             </div>
           </div>
 
-          <Card>
-            {products.produtos.map((prod) => (
-              <li key={prod._id}>
-                <Link href={`/produtos/${prod.slug.current}`}>
-                  <a>
-                    <Image
-                      className="aspect-square rounded-lg "
-                      src={urlFor(prod.image).url()}
-                      height={600}
-                      width={600}
-                    />
-                    <div className="m-3">
-                      <h1 className="text-md">{prod.title}</h1>
-                      <span className="font-bold">${prod.price}</span>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </Card>
+          <Card products={products.produtos} />
         </section>
       </main>
     </div>
